@@ -2,10 +2,15 @@
 {
     public class SalesAgent : SalesUnit
     {
-        private int _credits;
+        public int Credit { get; private set; }
+
+        public SalesAgent(string name) : base(name)
+        {
+        }
+
         public override void PayCommission(int amount)
         {
-            this._credits += amount;
+            this.Credit += amount;
         }
     }
 }
