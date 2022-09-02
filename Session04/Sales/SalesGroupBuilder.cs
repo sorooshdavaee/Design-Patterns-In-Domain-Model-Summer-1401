@@ -8,15 +8,16 @@ namespace Sales
         private string _name;
         private SalesGroup _group;
         private SalesAgentBuilder _agentBuilder;
+        private SalesGroupBuilder _groupBuilder;
         private List<SalesUnit> _subs;
 
         public SalesGroupBuilder Create(string name)
         {
             _name = name;
             _agentBuilder = new SalesAgentBuilder();
+            _groupBuilder = new SalesGroupBuilder();
             _subs = new List<SalesUnit>();
 
-            //_group = new SalesGroup(name);
             return this;
         }
 
@@ -26,12 +27,12 @@ namespace Sales
             _subs.Add(_agentBuilder.Build());
             return this;
         }
-        //public SalesGroupBuilder WithAgent2(Action<SalesAgentBuilder> configuration)
-        //{
-        //    configuration.Invoke(_agentBuilder);
-        //    _group.Units.Add(_agentBuilder.Build());
-        //    return this;
-        //}
+        public SalesGroupBuilder WithGroup(Action<SalesGroupBuilder> configuration)
+        {
+            configuration.Invoke(_groupBuilder);
+            _subs.Add(_groupBuilder.Build());
+            return this;
+        }
         public SalesGroupBuilder WithAgent(SalesAgent item)
         {
             _group.Units.Add(item);
