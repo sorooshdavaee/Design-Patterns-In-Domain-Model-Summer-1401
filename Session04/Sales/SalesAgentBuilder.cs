@@ -16,6 +16,13 @@ namespace Sales
             return this;
         }
 
+        ///more action 
+        // public SalesAgentBuilder DoSomething(type param)
+        //{
+        //    _salesAgent.Param=param;
+        //    return this;
+        //}
+
         public SalesAgent Instansiate(string name)
         {
             return new SalesAgent(name);
